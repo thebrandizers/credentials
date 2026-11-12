@@ -133,6 +133,8 @@ section{padding:clamp(56px,9vw,112px) 0}
 .igbtn:hover{color:var(--amber-ink)}
 .igfeed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:28px}
 .igfeed:empty{display:none}
+.iglive{margin-top:28px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);max-width:640px}
+.iglive iframe{display:block;width:100%;height:clamp(560px,150vw,780px);border:0}
 .igfeed a{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:10px;background:#dddcd7}
 .igfeed img{width:100%;height:100%;object-fit:cover}
 
@@ -468,6 +470,13 @@ WORK.forEach(w => {
 /* Instagram tiles: image files in img/, newest first. Each opens the profile. On your own domain a live feed widget replaces this. */
 const IG = [];
 const igf = document.getElementById("igfeed");
+/* Live profile feed from Instagram. Only runs on your own domain; the Claude preview link blocks it. */
+if (INLINE) {
+  const f = document.createElement("iframe");
+  f.src = "https://www.instagram.com/thebrandizers/embed/";
+  f.title = "@thebrandizers on Instagram"; f.loading = "lazy"; f.setAttribute("scrolling", "no");
+  const box = el("div", "iglive"); box.appendChild(f); igf.before(box);
+}
 IG.forEach(src => igf.appendChild(el("a", "", `<img src="${src}" alt="Post from @thebrandizers on Instagram" loading="lazy">`)).setAttribute("href", "https://www.instagram.com/thebrandizers/"));
 
 const cl = document.getElementById("clientList");
