@@ -460,9 +460,17 @@ WORK.forEach(w => {
   if (INLINE && vid && shot) shot.addEventListener("click", e => {
     e.preventDefault();
     const f = document.createElement("iframe");
-    f.src = `https://player.vimeo.com/video/${vid}?autoplay=1&badge=0&title=0&byline=0&portrait=0`;
+    f.src = `https://player.vimeo.com/video/${vid}?autoplay=1&badge=0&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1`;
     f.allow = "autoplay; fullscreen; picture-in-picture"; f.allowFullscreen = true; f.title = w.title;
     const d = el("div", "shot"); d.appendChild(f); shot.replaceWith(d);
+    /* When the film ends, put the still back so Vimeo's end screen never shows. */
+    const onMsg = ev => {
+      if (ev.source !== f.contentWindow || !/vimeo\.com$/.test(new URL(ev.origin).hostname)) return;
+      let m = ev.data; try { if (typeof m === "string") m = JSON.parse(m); } catch (x) { return; }
+      if (m.event === "ready") ["ended", "finish"].forEach(n => f.contentWindow.postMessage(JSON.stringify({ method: "addEventListener", value: n }), ev.origin));
+      if (m.event === "ended" || m.event === "finish") { removeEventListener("message", onMsg); d.replaceWith(shot); }
+    };
+    addEventListener("message", onMsg);
   });
   grid.appendChild(c);
 });
