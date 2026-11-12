@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Brandizers Credentials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one light scroll, phone first. Huge tight grey capitals with a single amber word,
+   and diagonal amber/grey stripes, carry the look; everything else stays quiet. Single theme by choice. */
+:root{
+  color-scheme: light;
+  --ink:#efeeea;      /* page */
+  --bar:#ededed;
+  --panel:#e7e6e1;
+  --line:#d3d2cc;
+  --paper:#1d1d1b;    /* text */
+  --body2:#45443f;
+  --mute:#74736d;
+  --steel:#adafb5;    /* display grey */
+  --amber:#e9a94a;
+  --amber-ink:#a66c0c;
+  --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --body:"Helvetica Neue",Helvetica,"Archivo",Arial,sans-serif;
+  --gutter:clamp(18px,5vw,56px);
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.035em;line-height:1;text-wrap:balance}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+section{padding:clamp(56px,9vw,112px) 0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.h2{font-size:clamp(34px,7.4vw,76px);color:var(--steel)}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:62ch;color:var(--paper)}
+.mute{color:var(--mute)}
+.amber{color:var(--amber)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--bar);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.bar img{height:44px;width:auto}
+.bar nav a{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--paper);white-space:nowrap}
+.bar nav a:hover{color:var(--amber-ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(28px,5vw,48px) 0 clamp(64px,10vw,110px)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(46px,13.4vw,140px);line-height:.92;font-weight:700;letter-spacing:-.045em;color:var(--steel);margin:clamp(22px,5vw,44px) 0 clamp(28px,6vw,56px) -.04em}
+.hero h1 span{display:block;white-space:nowrap}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero h1 .skip{position:relative;display:inline-block;font-weight:inherit;padding:0 .06em}
+.hero h1 .skip svg{position:absolute;inset:-8% -7% -12% -7%;width:114%;height:120%;overflow:visible}
+.hero p.sub{max-width:30ch;font-size:clamp(18px,2.6vw,26px);line-height:1.35;color:var(--paper)}
+.hero .scroll{display:inline-block;margin-top:clamp(8px,2vw,20px);font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.stripes{position:absolute;inset:0;pointer-events:none}
+.stripes i{position:absolute;bottom:-30%;height:190%;transform-origin:bottom left;transform:rotate(36deg)}
+.stripes i:nth-child(1){left:52%;width:clamp(8px,1.6vw,18px);background:#cfcfcd}
+.stripes i:nth-child(2){left:58%;width:clamp(34px,6.5vw,76px);background:linear-gradient(180deg,#e6b565,#efc98a)}
+.stripes i:nth-child(3){left:calc(58% + clamp(34px,6.5vw,76px));width:clamp(28px,5.5vw,64px);background:#dddcd8}
+@media (max-width:700px){.stripes{opacity:.55}.stripes i:nth-child(1){left:66%}.stripes i:nth-child(2){left:74%}.stripes i:nth-child(3){left:calc(74% + 34px)}}
+
+/* tape */
+.tape{background:var(--paper);color:var(--ink);transform:rotate(-2deg);margin:0 -4vw 0;padding:14px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:2;}
+.tape div{display:inline-block;font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(22px,4.6vw,42px);animation:slide 26s linear infinite}
+.tape span{margin-right:.9em}
+.tape b{font-weight:700;color:var(--amber)}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tape div{animation:none}html{scroll-behavior:auto}}
+
+/* about */
+.about .wrap{display:grid;gap:36px}
+.route{display:grid;gap:18px;margin-top:8px;padding:0;list-style:none}
+.route li{border-top:1px solid var(--line);padding-top:16px}
+.route small{display:block;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.route strong{display:block;font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(34px,6vw,54px);line-height:1;color:var(--steel);margin-top:6px}
+.route li:last-child strong{color:var(--amber)}
+.route em{font-style:normal;font-size:14px;color:var(--mute)}
+@media (min-width:760px){.route{grid-template-columns:repeat(3,1fr);gap:28px}}
+
+/* numbers */
+.nums{display:grid;gap:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0}
+.num{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.num b{font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(48px,11vw,110px);line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
+.num span{font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(24px,5.4vw,54px);line-height:1;color:var(--steel)}
+.num i{flex-basis:100%;font-style:normal;font-size:14px;color:var(--mute);margin-top:2px}
+.aside{font-size:14px;font-style:italic;color:var(--mute);margin-top:16px;display:inline-block}
+
+/* work */
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:32px}
+.reel{position:relative;border-radius:6px;overflow:hidden;margin-bottom:28px;background:var(--panel)}
+.reel img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.reel .cap{position:absolute;left:16px;bottom:14px;right:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;text-decoration:none}
+.pill.ghost{background:rgba(239,238,234,.9);color:var(--paper);border:1px dashed var(--mute);font-weight:600}
+.grid{display:grid;gap:clamp(48px,8vw,96px)}
+.card{display:block}
+.card .shot{display:block;position:relative;aspect-ratio:16/9;background:#dddcd7;border-radius:14px;overflow:hidden}
+.card .shot img{width:100%;height:100%;object-fit:cover}
+.card .shot iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.card .play{position:absolute;left:16px;bottom:16px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;color:var(--paper);font-size:14px;padding-left:3px}
+.card .shot.type{display:grid;place-items:center;padding:20px;text-align:center}
+.card .shot.type span{font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(30px,6vw,56px);line-height:1;color:var(--steel)}
+.badge{position:absolute;top:14px;left:14px;background:var(--paper);color:var(--amber);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+.card .txt{display:grid;gap:14px;padding-top:20px}
+.card h3{font-size:clamp(30px,5.6vw,60px);line-height:1}
+.card p{font-size:clamp(16px,1.6vw,18px);color:var(--body2);max-width:58ch}
+@media (min-width:860px){
+  .card{display:grid;grid-template-columns:1.55fr 1fr;column-gap:clamp(32px,4vw,56px);align-items:center}
+  .card .txt{padding-top:0;gap:16px}
+  .card:nth-child(even){grid-template-columns:1fr 1.55fr}
+  .card:nth-child(even) .shot{order:2}
+  .card h3{font-size:clamp(32px,3.6vw,50px)}
+}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px;margin-top:4px;padding:0;list-style:none}
+.stats b{display:block;font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:26px;line-height:1.1;color:var(--paper)}
+.stats span{font-size:12px;color:var(--mute);line-height:1.35;display:block}
+.awards{display:flex;align-items:center;gap:10px;margin-top:6px}
+.awards img{height:58px;width:auto}
+.awards span{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:clamp(18px,2vw,22px);line-height:1.1;margin-left:6px}
+.quote{border-left:3px solid var(--amber);padding-left:12px;font-size:14px;color:var(--paper)}
+.quote cite{display:block;font-style:normal;color:var(--mute);font-size:12px;margin-top:2px}
+
+.ig{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 24px}
+.igbtn{font-family:var(--display);font-weight:600;letter-spacing:-.03em;font-size:clamp(22px,3.4vw,38px);color:var(--paper);text-decoration:none;border-bottom:3px solid var(--amber);padding-bottom:2px}
+.igbtn:hover{color:var(--amber-ink)}
+.igfeed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:28px}
+.igfeed:empty{display:none}
+.igfeed a{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:10px;background:#dddcd7}
+.igfeed img{width:100%;height:100%;object-fit:cover}
+
+/* services */
+.svc{display:grid;gap:22px}
+@media (min-width:860px){.svc{grid-template-columns:repeat(3,1fr)}}
+.svc article{border-top:3px solid var(--amber);padding-top:18px}
+.svc h3{font-size:26px;margin-bottom:10px}
+.svc p{font-size:15px;color:var(--body2)}
+.flow{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 40px;padding:0;list-style:none;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.flow li{border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.flow li:not(:last-child)::after{content:"→";margin-left:10px;color:var(--amber-ink)}
+.strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:40px}
+@media (min-width:760px){.strip{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.strip img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.strip img.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;min-height:0}
+@media (max-width:759px){.strip img.big{aspect-ratio:4/5}}
+.tools{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:36px;font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(22px,4vw,34px);line-height:1.05;color:var(--steel)}
+.tools span:nth-child(odd){color:var(--amber)}
+
+/* clients */
+.logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;padding:1px;margin:0;list-style:none}
+.logos li{box-shadow:0 0 0 1px var(--line);display:flex;align-items:center;justify-content:center;height:clamp(84px,24vw,124px);padding:0 14%;min-width:0}
+.logos img{max-width:100%;max-height:clamp(24px,7.5vw,40px);width:auto;height:auto;object-fit:contain;filter:invert(1);opacity:.72}
+.logos .name{color:var(--body2);font-weight:700;font-size:clamp(11px,2.9vw,15px);letter-spacing:.16em;text-transform:uppercase;text-align:center;line-height:1.3}
+.logos li.tall img{max-height:clamp(44px,13vw,68px)}
+@media (min-width:640px){.logos{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:980px){.logos{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* team */
+.team .wrap{display:grid;gap:32px;align-items:center}
+
+.depts{display:grid;gap:0;padding:0;margin:26px 0 0;list-style:none}
+.depts li{padding:14px 0;border-top:1px solid var(--line)}
+.depts b{display:block;font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
+.depts span{font-size:14px;color:var(--mute)}
+.people{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.people figure{margin:0}
+.people img{aspect-ratio:1;object-fit:cover;border-radius:4px;width:100%}
+.people figcaption{font-size:14px;margin-top:8px}
+.people figcaption span{display:block;color:var(--mute);font-size:12px}
+
+/* news */
+.news{display:grid;gap:0;padding:0;margin:0;list-style:none}
+.news li{display:grid;gap:6px;padding:22px 0;border-top:1px solid var(--line)}
+.news li:last-child{border-bottom:1px solid var(--line)}
+.news small{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-ink)}
+.news b{font-family:var(--display);font-weight:600;letter-spacing:-.035em;font-size:clamp(22px,3.2vw,30px);line-height:1}
+.news span{color:var(--body2);font-size:15px;max-width:70ch}
+@media (min-width:760px){.news li{grid-template-columns:180px 1fr;column-gap:24px}.news li span{grid-column:2}}
+
+/* contact */
+.contact{text-align:left;padding-bottom:48px}
+.contact h2{font-size:clamp(40px,9.4vw,112px);color:var(--steel);line-height:.95}
+.contact .pill{background:var(--amber);color:var(--paper)}
+.contact .row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.places{display:grid;gap:22px;margin-top:44px;font-size:14px;color:var(--mute)}
+.places b{display:block;color:var(--paper);letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:4px}
+@media (min-width:760px){.places{grid-template-columns:repeat(3,1fr)}}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;font-size:12px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+footer img{height:34px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" aria-label="The Brandizers, back to top"><img src="img/logo-light.png" alt="The Brandizers Creative Hub"></a>
+    <nav aria-label="Sections"><a href="#work">Explore work ↘</a></nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <p class="eyebrow">Creative agency · Production house</p>
+    <h1><span>We make</span><span><em>work</em> you</span><span>can’t skip.</span></h1>
+    <a class="scroll" href="#about">Scroll to explore ↓</a>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true"><div>
+  <span>We <b>think.</b></span><span>We <b>cut.</b></span><span>We <b>own it.</b></span><span>We <b>think.</b></span><span>We <b>cut.</b></span><span>We <b>own it.</b></span><span>We <b>think.</b></span><span>We <b>cut.</b></span><span>We <b>own it.</b></span><span>We <b>think.</b></span><span>We <b>cut.</b></span><span>We <b>own it.</b></span>
+</div></div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Who we are</p>
+      <p class="lede">Nine years ago we did what nobody in the region had done: we put an agency and a production house under one roof and called it a hub.</p>
+      <p class="lede mute" style="margin-top:16px">One team, one kitchen, zero handovers. The idea, the shoot and the edit all happen in-house, so nothing gets lost on the way to the screen.</p>
+    </div>
+    <ol class="route">
+      <li><small>Started in</small><strong>Beirut</strong></li>
+      <li><small>Crashed in</small><strong>Dubai</strong></li>
+      <li><small>Expanding to</small><strong>Saudi Arabia</strong></li>
+    </ol>
+    <div>
+      <div class="nums">
+        <div class="num"><b>35</b><span>people</span><i>Between Beirut and Dubai, synced across time zones.</i></div>
+        <div class="num"><b>25+</b><span>countries</span><i>Markets across Levant · GCC · SAP · Europe.</i></div>
+        <div class="num"><b>450+</b><span>projects</span><i>Across beauty, fashion, lifestyle, and beyond.</i></div>
+      </div>
+      <span class="aside">Yes, we sleep on planes.</span>
+    </div>
+  </div>
+</section>
+
+<section id="clients" style="padding-top:clamp(8px,2vw,24px)">
+  <div class="wrap">
+    <p class="eyebrow">Clients</p>
+    <h2 class="h2" style="margin-bottom:30px">Trusted by top <span class="amber">brands</span></h2>
+    <ul class="logos" id="clientList"></ul>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">What we do</p>
+    <h2 class="h2" style="margin-bottom:26px">We don’t “service.” <span class="amber">We brandize.</span></h2>
+    <ol class="flow">
+      <li>Insight</li><li>Concept</li><li>Script</li><li>Boards</li><li>Set days</li><li>Edit, grade, mix, motion</li>
+    </ol>
+    <div class="svc">
+      <article>
+        <h3>Creative</h3>
+        <p>Campaigns that trend. We turn an insight into a concept, and a concept into a script and boards that are ready to shoot.</p>
+      </article>
+      <article>
+        <h3>Tailored production</h3>
+        <p>Scripting, casting, photography, filming, animation, location scouting. We handle every aspect from A to Z, for TV commercials and digital content alike, at a price point that won’t break the bank.</p>
+      </article>
+      <article>
+        <h3>Post-production</h3>
+        <p>A full in-house team for editing, animation, VFX, compositing and voiceovers. As many drafts as it takes until you’re confident in the result, at no extra cost.</p>
+      </article>
+    </div>
+    <div class="strip">
+      <img class="big" src="img/bts-horse.jpg" alt="Model on a black horse in a studio set lined with ornate carpets" loading="lazy">
+      <img src="img/bts-train.jpg" alt="Film crew shooting inside a golden train carriage set in a studio" loading="lazy">
+      <img src="img/bts-beauty.jpg" alt="Camera operator filming a model on a beauty campaign set" loading="lazy">
+      <img src="img/bts-monitor.jpg" alt="Director’s monitor showing a scene being filmed on set" loading="lazy">
+      <img src="img/bts-rooftop.jpg" alt="Camera operator filming on a Dubai rooftop set at sunset" loading="lazy">
+    </div>
+    <p class="tools" aria-label="Our toolbox"><span>Campaigns that trend.</span><span>Shooting.</span><span>Event coverage.</span><span>Conventions.</span><span>Internal videos &amp; presentations.</span></p>
+  </div>
+</section>
+
+<section id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Newest first</p>
+        <h2 class="h2">Latest <span class="amber">work</span></h2>
+      </div>
+    </div>
+    <div class="grid" id="workGrid"></div>
+  </div>
+</section>
+
+<section id="instagram" style="padding-top:0">
+  <div class="wrap">
+    <div class="ig">
+      <div>
+        <p class="eyebrow">On Instagram</p>
+        <h2 class="h2">See it <span class="amber">evolve.</span></h2>
+      </div>
+      <a class="igbtn" href="https://www.instagram.com/thebrandizers/" target="_blank" rel="noopener">@thebrandizers ↗</a>
+    </div>
+    <div class="igfeed" id="igfeed"></div>
+  </div>
+</section>
+
+<section class="team" id="team" style="padding-top:0">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Team</p>
+      <h2 class="h2">Time zones? Covered. Teams? Cross-regional.</h2>
+      <p class="lede" style="margin-top:18px">35 people living between Beirut and Dubai, never missing the drop.</p>
+      <ul class="depts">
+        <li><b>Creative</b><span>Strategy, concepts, scripts, boards</span></li>
+        <li><b>Production</b><span>Producers, casting, locations, shoots</span></li>
+        <li><b>Post-production</b><span>Editing, animation, VFX, compositing, sound</span></li>
+      </ul>
+      <div class="people" id="people"></div>
+    </div>
+  </div>
+</section>
+
+<section id="news" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">News</p>
+    <h2 class="h2" style="margin-bottom:30px">What’s new</h2>
+    <ul class="news" id="newsList"></ul>
+  </div>
+</section>
+
+<section class="contact" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Got a brief? <span class="amber">Let’s brandize it.</span></h2>
+    <div class="row">
+      <a class="pill" href="https://www.instagram.com/thebrandizers/" target="_blank" rel="noopener">Instagram @thebrandizers ↗</a>
+    </div>
+    <div class="places">
+      <div><b>Dubai</b>The Meydan Hotel, Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.</div>
+      <div><b>Beirut</b>Where it started.</div>
+      <div><b>Saudi Arabia</b>Opening next.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-light.png" alt="The Brandizers">
+    <span>Creative agency · Production house · Beirut × Dubai</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENT. To add a new ad, put a new block at the TOP of WORK.
+   url = Vimeo link (opens in a new tab). img = still. logo = brand logo file in logos/ (optional).
+   ============================================================ */
+const WORK = [
+  {
+    brand: "NYX Professional Makeup",
+    title: "NYX Smushy × Haifa Wehbe",
+    logo: "logos/18.png",
+    img: "img/smushy-haifa.jpg",
+    text: "We turned a lip balm into an emotional ritual. Anchored by Haifa Wehbe and her song “Bous El Wawa”, Smushy became the swipe that kisses the pain away, for meltdowns and main-character moments alike.",
+    url: "https://vimeo.com/1245797295"
+  },
+  {
+    brand: "Maybelline New York",
+    title: "Maybelline Diwali",
+    logo: "logos/23.png",
+    img: "img/maybelline-diwali.jpg",
+    text: "The Brandizers landed in India to create Maybelline New York’s Diwali campaign, partnering with the beautiful Kiara Advani. A festive film made for the Indian market, it turned into a huge hit across the country.",
+    url: "https://vimeo.com/1245792340"
+  },
+  {
+    brand: "Lux",
+    title: "Lux Pop the Bubble",
+    img: "img/lux-pop-the-bubble.jpg",
+    text: "We partnered with Lux to create the campaign for their newest launch in Saudi Arabia. With the beautiful Nour Ghandour, Pop the Bubble became the talk of the town across the region, shot for the first time on immersive LED screen technology.",
+    url: "https://vimeo.com/1245790369"
+  },
+  {
+    brand: "Charlotte Tilbury",
+    title: "Charlotte Tilbury Ramadan Campaign",
+    img: "img/charlotte-tilbury-ramadan.jpg",
+    text: "Matte or glow? Turns out beauty wins every time. Created and shot in Dubai, this Ramadan film staged a chess match and a beautiful rivalry between our two queens. The region adored it. And the winner? Charlotte Tilbury, obviously.",
+    url: "https://vimeo.com/1245776569"
+  },
+  {
+    brand: "Garnier",
+    title: "The Garnier Late Night Show",
+    img: "img/garnier.jpg",
+    text: "For four seasons in a row, we’ve been dominating entertainment on Shahid, bringing Garnier Ramadaniyat to life: the first entertainment show by a brand in the region.",
+    awards: { img: "img/effie.png", count: 2, label: "Winner of 2 Effie Awards" },
+    url: "https://vimeo.com/1246132976"
+  },
+  {
+    brand: "NYX Professional Makeup",
+    title: "NYX Face Glue Primer",
+    img: "img/nyx-face-glue.jpg",
+    text: "Drama took over. Reality was the plot. A dinner, fully ruined. And what walked out untouched? Only perfect makeup. Our partnership with NYX set the tone for how branded entertainment and product benefit mix, flawlessly.",
+    url: "https://vimeo.com/1087352217"
+  },
+  {
+    brand: "Kérastase",
+    title: "Kérastase Ramadan Campaign",
+    img: "img/kerastase-ramadan.jpg",
+    text: "Ramadan was the month Kérastase crowned Andria Tayeh its brand ambassador, and we gave her the entrance she deserved. An emotional film with her father, the hairdresser, at the heart of the story. Beautiful hair, shiny waves, and a launch that owned the season.",
+    url: "https://vimeo.com/1087766894"
+  }
+];
+
+/* Client logos: [file in logos/, name]. All are white on transparent. */
+const CLIENTS = [["25", "Lux", "tall"],["30", "Lipton Ice Tea", "tall"],["12", "Garnier"],["18", "NYX Professional Makeup"],["00", "L’Oréal Paris"],["01", "Charlotte Tilbury"],
+  ["06", "Unilever", "tall"],["07", "YSL Beauté", "tall"],["03", "Lancôme"],["04", "Hoover", "tall"],["05", "essie"],["09", "L’Oréal Professionnel"],
+  ["10", "Matrix"],["11", "Kiehl’s"],["13", "Ariel"],["14", "CeraVe"],["15", "Redken"],["16", "Rimmel"],
+  ["17", "La Roche-Posay"],["19", "Always"],["20", "Philip Morris International", "tall"],["21", "Galeries Lafayette"],["22", "Bourjois"],["23", "Maybelline New York"],
+  ["24", "Kérastase"],["32", "SkinCeuticals"],["31", "Color Wow"],["29", "Joby Aviation"],["27", "Sephora"],["28", "Vichy"],
+  ["26", "Magrabi"],["33", "Doctor.M"],["34", "Valentino Beauty"],["35", "Mixa"],["36", "Dr.G", "tall"],["02", "P&G"]];
+
+/* People cards: { name, role, img }. Leave empty to show departments only. */
+const TEAM = [];
+
+const NEWS = [
+  { tag: "Expansion", title: "Next stop: Saudi Arabia", text: "We’re building an on-ground presence in the Kingdom to be closer to partners and faster on set." },
+  { tag: "Awards", title: "The Garnier Late Night Show at the Effie Awards MENA", text: "Our Ramadan talk show for Garnier reached 10M viewers, with KSA leading the growth." },
+  { tag: "Press", title: "Campaign Middle East on NYX Face Glue Primer", text: "The magazine called the campaign “the talk of the city”." }
+];
+
+/* ============================================================ */
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
+const esc = s => String(s).replace(/[&<>"]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+
+/* Films play inside the page on your own domain. The Claude preview link blocks outside players, so there they open Vimeo. */
+const INLINE = !/claude|anthropic/i.test(location.hostname);
+const grid = document.getElementById("workGrid");
+WORK.forEach(w => {
+  const c = el("article", "card");
+  const tag = w.url && w.img ? "a" : "div";
+  const link = w.url ? ` href="${esc(w.url)}" target="_blank" rel="noopener" aria-label="Watch ${esc(w.title)}"` : "";
+  c.innerHTML =
+    (w.img ? `<${tag} class="shot"${tag === "a" ? link : ""}><img src="${w.img}" alt="${esc(w.brand)}: ${esc(w.title)}" loading="lazy">${w.url ? `<span class="play" aria-hidden="true">▶</span>` : ""}` : `<div class="shot type"><span>${esc(w.label || w.brand)}</span>`) +
+    (w.badge ? `<span class="badge">${esc(w.badge)}</span>` : "") + (w.img ? `</${tag}>` : `</div>`) +
+    `<div class="txt"><h3>${esc(/[.!?]$/.test(w.title) ? w.title : w.title + ".")}</h3><p>${esc(w.text)}</p>` +
+    (w.stats ? `<ul class="stats">${w.stats.map(x => `<li><b>${esc(x[0])}</b><span>${esc(x[1])}</span></li>`).join("")}</ul>` : "") +
+    (w.awards ? `<div class="awards">${`<img src="${w.awards.img}" alt="">`.repeat(w.awards.count)}<span>${esc(w.awards.label)}</span></div>` : "") +
+    (w.quote ? `<p class="quote">${esc(w.quote[0])}<cite>${esc(w.quote[1])}</cite></p>` : "") +
+    `</div>`;
+  const vid = (w.url.match(/vimeo\.com\/(?:video\/)?(\d+)/) || [])[1];
+  const shot = c.querySelector("a.shot");
+  if (INLINE && vid && shot) shot.addEventListener("click", e => {
+    e.preventDefault();
+    const f = document.createElement("iframe");
+    f.src = `https://player.vimeo.com/video/${vid}?autoplay=1&badge=0&title=0&byline=0&portrait=0`;
+    f.allow = "autoplay; fullscreen; picture-in-picture"; f.allowFullscreen = true; f.title = w.title;
+    const d = el("div", "shot"); d.appendChild(f); shot.replaceWith(d);
+  });
+  grid.appendChild(c);
+});
+
+/* Instagram tiles: image files in img/, newest first. Each opens the profile. On your own domain a live feed widget replaces this. */
+const IG = [];
+const igf = document.getElementById("igfeed");
+IG.forEach(src => igf.appendChild(el("a", "", `<img src="${src}" alt="Post from @thebrandizers on Instagram" loading="lazy">`)).setAttribute("href", "https://www.instagram.com/thebrandizers/"));
+
+const cl = document.getElementById("clientList");
+CLIENTS.forEach(c => cl.appendChild(el("li", c[2] || "", c[0] ? `<img src="logos/${c[0]}.png" alt="${esc(c[1])}" loading="lazy">` : `<span class="name">${esc(c[1])}</span>`)));
+
+const pp = document.getElementById("people");
+TEAM.forEach(p => pp.appendChild(el("figure", "", `<img src="${p.img}" alt="${esc(p.name)}" loading="lazy"><figcaption>${esc(p.name)}<span>${esc(p.role)}</span></figcaption>`)));
+if (!TEAM.length) pp.remove();
+
+const nl = document.getElementById("newsList");
+NEWS.forEach(n => nl.appendChild(el("li", "", `<small>${esc(n.tag)}</small><b>${esc(n.title)}</b><span>${esc(n.text)}</span>`)));
+
+</script>
+</body>
+</html>
